@@ -42,6 +42,12 @@ adesigns_calendar:
   resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"    
 ```
 
+Install the fullcalendar javascript library.
+
+You can use you favourite frontend dependency manager for this, like npm or yarn.
+
+If you copy the library by hand, be sure to also include jquery and moment.js, as well as jquery-ui if you want to use draggable and resizable events.
+
 Publish the assets:
 
     $ php app/console assets:install web
