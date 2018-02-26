@@ -4,7 +4,7 @@ $(function () {
     var m = date.getMonth();
     var y = date.getFullYear();
 
-    $('#calendar-holder').fullCalendar({
+    $('#fullcalendar').fullCalendar({
         header: {
             left: 'prev, next',
             center: 'title',
@@ -21,12 +21,12 @@ $(function () {
         eventSources: [
             {
                 url: Routing.generate('fullcalendar_loader'),
-                type: 'POST',
+                type: 'GET',
                 // A way to add custom filters to your event listeners
                 data: {
                 },
                 error: function() {
-                   //alert('There was an error while fetching Google Calendar!');
+                   alert('There was an error fetching calendar data.');
                 }
             }
         ]
