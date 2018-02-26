@@ -1,7 +1,7 @@
 <?php
 namespace ADesigns\CalendarBundle\Tests\Fixtures\EventListener;
 
-use ADesigns\CalendarBundle\Entity\EventEntity;
+use ADesigns\CalendarBundle\Entity\FullCalendarEvent;
 use ADesigns\CalendarBundle\Event\CalendarEvent;
 
 /**
@@ -22,7 +22,7 @@ class CalendarEventListener
 
         if ($calendarEvent->getStartDatetime()->getTimestamp() === $startTime->getTimestamp()
             && $calendarEvent->getEndDatetime()->getTimestamp() === $endTime->getTimestamp()) {
-            $event = new EventEntity("Fake Event Title", new \DateTime(), null, true);
+            $event = new FullCalendarEvent("Fake Event Title", new \DateTime(), null, true);
             $calendarEvent->addEvent($event);
         }
 

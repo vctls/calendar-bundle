@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
 
-use ADesigns\CalendarBundle\Entity\EventEntity;
+use ADesigns\CalendarBundle\Entity\FullCalendarEvent;
 
 /**
  * Event used to store EventEntitys
@@ -48,16 +48,27 @@ class CalendarEvent extends Event
     /**
      * If the event isn't already in the list, add it
      * 
-     * @param EventEntity $event
+     * @param FullCalendarEvent $event
      * @return CalendarEvent $this
      */
-    public function addEvent(EventEntity $event)
+    public function addEvent(FullCalendarEvent $event)
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
         }
         
         return $this;
+    }
+
+    /**
+     * Set the events.
+     * The collection will be overwritten.
+     *
+     * @param array $events
+     */
+    public function setEvents(array $events)
+    {
+        $this->events = $events;
     }
     
     /**

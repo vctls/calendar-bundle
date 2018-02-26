@@ -5,19 +5,14 @@ $(function () {
     var y = date.getFullYear();
 
     $('#fullcalendar').fullCalendar({
+        editable: true,
         header: {
-            left: 'prev, next',
+            left: 'prev, next today',
             center: 'title',
-            right: 'month, basicWeek, basicDay,'
+            right: 'month,agendaWeek,agendaDay,listWeek'
         },
         lazyFetching: true,
-        timeFormat: {
-            // for agendaWeek and agendaDay
-            agenda: 'h:mmt',    // 5:00 - 6:30
-
-            // for all other views
-            '': 'h:mmt'         // 7p
-        },
+        timeFormat: 'H(:mn)',
         eventSources: [
             {
                 url: Routing.generate('fullcalendar_loader'),

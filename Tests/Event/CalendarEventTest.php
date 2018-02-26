@@ -26,7 +26,7 @@ class CalendarEventTest extends \PHPUnit_Framework_TestCase
         
         $eventTitle = "Test Title 1";
         
-        $eventEntityMock = $this->getMockBuilder('ADesigns\CalendarBundle\Entity\EventEntity')
+        $eventEntityMock = $this->getMockBuilder('ADesigns\CalendarBundle\Entity\FullCalendarEvent')
             ->setConstructorArgs(array($eventTitle, $beginDatetime, $endDatetime))
             ->setMethods(null)
             ->getMock();   

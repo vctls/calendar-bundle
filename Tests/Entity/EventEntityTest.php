@@ -2,7 +2,7 @@
 
 namespace ADesigns\CalendarBundle\Tests\Entity;
 
-use ADesigns\CalendarBundle\Entity\EventEntity;
+use ADesigns\CalendarBundle\Entity\FullCalendarEvent;
 
 class EventEntityTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,7 +12,7 @@ class EventEntityTest extends \PHPUnit_Framework_TestCase
         $endDatetime = new \DateTime('2012-01-01 02:00:00');
         $eventTitle = "Test Title 1";
         
-        $eventEntityMock = $this->getMockBuilder('ADesigns\CalendarBundle\Entity\EventEntity')
+        $eventEntityMock = $this->getMockBuilder('ADesigns\CalendarBundle\Entity\FullCalendarEvent')
             ->setConstructorArgs(array($eventTitle, $beginDatetime, $endDatetime))
             ->setMethods(null)
             ->getMock();   
@@ -36,7 +36,7 @@ class EventEntityTest extends \PHPUnit_Framework_TestCase
         $endDatetime = new \DateTime('2012-01-01 02:00:00');
         $eventTitle = "Test Title 1";
         
-        $eventEntityMock = $this->getMockBuilder('ADesigns\CalendarBundle\Entity\EventEntity')
+        $eventEntityMock = $this->getMockBuilder('ADesigns\CalendarBundle\Entity\FullCalendarEvent')
             ->setConstructorArgs(array($eventTitle, $beginDatetime, $endDatetime, true))
             ->setMethods(null)
             ->getMock();   
@@ -56,7 +56,7 @@ class EventEntityTest extends \PHPUnit_Framework_TestCase
 
     public function testNonStandardFields()
     {
-        $event = new EventEntity('Test', new \DateTime('2012-01-01 00:00:00'), new \DateTime('2012-01-01 01:00:00'));
+        $event = new FullCalendarEvent('Test', new \DateTime('2012-01-01 00:00:00'), new \DateTime('2012-01-01 01:00:00'));
         $event->addField('description', 'Event descriptions');
 
         $expectedArray = array(

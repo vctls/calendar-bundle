@@ -2,6 +2,7 @@
 
 namespace ADesigns\CalendarBundle\Controller;
 
+use ADesigns\CalendarBundle\Serializer\ArrayNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -29,9 +30,11 @@ class CalendarController extends Controller
         $response->headers->set('Content-Type', 'application/json');
         
         $return_events = array();
+
+        $normalizer = new ArrayNormalizer();
         
         foreach($events as $event) {
-            $return_events[] = $event->toArray();    
+            $return_events[] = $normalizer->normalize($event);
         }
         
         $response->setContent(json_encode($return_events));

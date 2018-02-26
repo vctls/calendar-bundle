@@ -7,7 +7,7 @@ namespace ADesigns\CalendarBundle\Entity;
  * @author Mike Yudin <mikeyudin@gmail.com>
  */
 
-class EventEntity 
+class FullCalendarEvent implements EditableInterface
 {
     /**
      * @var mixed Unique identifier of this event (optional).
@@ -202,8 +202,11 @@ class EventEntity
     {
         $this->allDay = (boolean) $allDay;
     }
-    
-    public function getAllDay()
+
+    /**
+     * @return bool
+     */
+    public function isAllDay()
     {
         return $this->allDay;
     }
