@@ -13,4 +13,9 @@
         <default key="_controller">ADesignsCalendarBundle:FullCalendarEvent:edit</default>
         <option key="expose">true</option>
     </route>
+
+    <route id="fullcalendarevent_new" path="/fc-new-event">
+        <default key="_controller">ADesignsCalendarBundle:FullCalendarEvent:new</default>
+        <option key="expose">true</option>
+    </route>
 </routes>

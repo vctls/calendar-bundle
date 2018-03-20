@@ -1,75 +1,84 @@
 <?php
 namespace ADesigns\CalendarBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Class for holding a calendar event's details.
  * 
  * @author Mike Yudin <mikeyudin@gmail.com>
+ * @ORM\Entity()
  */
-
 class FullCalendarEvent implements EditableInterface
 {
     /**
      * @var mixed Unique identifier of this event (optional).
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
     
     /**
      * @var string Title/label of the calendar event.
+     * @ORM\Column()
      */
     protected $title;
     
     /**
      * @var string URL Relative to current path.
+     * @ORM\Column()
      */
     protected $url;
     
     /**
      * @var string HTML color code for the bg color of the event label.
+     * @ORM\Column()
      */
     protected $bgColor;
     
     /**
      * @var string HTML color code for the foregorund color of the event label.
+     * @ORM\Column()
      */
     protected $fgColor;
     
     /**
      * @var string css class for the event label
+     * @ORM\Column()
      */
     protected $cssClass;
     
     /**
      * @var \DateTime DateTime object of the event start date/time.
+     * @ORM\Column(type="datetime")
      */
     protected $startDatetime;
     
     /**
      * @var \DateTime DateTime object of the event end date/time.
+     * @ORM\Column(type="datetime")
      */
     protected $endDatetime;
     
     /**
      * @var boolean Is this an all day event?
+     * @ORM\Column(type="boolean")
      */
     protected $allDay = false;
 
     /**
      * @var array Non-standard fields
+     * @ORM\Column(type="json_array")
      */
     protected $otherFields = array();
     
-    public function __construct($title, \DateTime $startDatetime, \DateTime $endDatetime = null, $allDay = false)
+    public function __construct($title = "", \DateTime $startDatetime = null, \DateTime $endDatetime = null, $allDay = false)
     {
         $this->title = $title;
         $this->startDatetime = $startDatetime;
-        $this->setAllDay($allDay);
-        
-        if ($endDatetime === null && $this->allDay === false) {
-            throw new \InvalidArgumentException("Must specify an event End DateTime if not an all day event.");
-        }
-        
         $this->endDatetime = $endDatetime;
+        $this->setAllDay($allDay);
     }
 
     /**
@@ -121,6 +130,7 @@ class FullCalendarEvent implements EditableInterface
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
     
     public function getId()
@@ -131,6 +141,7 @@ class FullCalendarEvent implements EditableInterface
     public function setTitle($title) 
     {
         $this->title = $title;
+        return $this;
     }
     
     public function getTitle() 
@@ -141,6 +152,7 @@ class FullCalendarEvent implements EditableInterface
     public function setUrl($url)
     {
         $this->url = $url;
+        return $this;
     }
     
     public function getUrl()
@@ -151,6 +163,7 @@ class FullCalendarEvent implements EditableInterface
     public function setBgColor($color)
     {
         $this->bgColor = $color;
+        return $this;
     }
     
     public function getBgColor()
@@ -161,6 +174,7 @@ class FullCalendarEvent implements EditableInterface
     public function setFgColor($color)
     {
         $this->fgColor = $color;
+        return $this;
     }
     
     public function getFgColor()
@@ -171,6 +185,7 @@ class FullCalendarEvent implements EditableInterface
     public function setCssClass($class)
     {
         $this->cssClass = $class;
+        return $this;
     }
     
     public function getCssClass()
@@ -181,6 +196,7 @@ class FullCalendarEvent implements EditableInterface
     public function setStartDatetime(\DateTime $start)
     {
         $this->startDatetime = $start;
+        return $this;
     }
     
     public function getStartDatetime()
@@ -191,6 +207,7 @@ class FullCalendarEvent implements EditableInterface
     public function setEndDatetime(\DateTime $end)
     {
         $this->endDatetime = $end;
+        return $this;
     }
     
     public function getEndDatetime()
@@ -201,6 +218,7 @@ class FullCalendarEvent implements EditableInterface
     public function setAllDay($allDay = false)
     {
         $this->allDay = (boolean) $allDay;
+        return $this;
     }
 
     /**
