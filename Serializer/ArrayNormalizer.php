@@ -3,6 +3,7 @@
 namespace ADesigns\CalendarBundle\Serializer;
 
 use ADesigns\CalendarBundle\Entity\DisplayableInterface;
+use ADesigns\CalendarBundle\Entity\EditableInterface;
 
 /**
  * User: Victor
@@ -18,42 +19,21 @@ class ArrayNormalizer
      */
     public function normalize($fullCalendarEvent)
     {
-        $array = array();
+        $arr = array();
 
-//        if ($fullCalendarEvent->id !== null) {
-//            $array['id'] = $fullCalendarEvent->id;
-//        }
-//
-//        if ($fullCalendarEvent->url !== null) {
-//            $array['url'] = $fullCalendarEvent->url;
-//        }
-//
-//        if ($fullCalendarEvent->bgColor !== null) {
-//            $array['backgroundColor'] = $fullCalendarEvent->bgColor;
-//            $array['borderColor'] = $fullCalendarEvent->bgColor;
-//        }
-//
-//        if ($fullCalendarEvent->fgColor !== null) {
-//            $array['textColor'] = $fullCalendarEvent->fgColor;
-//        }
-//
-//        if ($fullCalendarEvent->cssClass !== null) {
-//            $array['className'] = $fullCalendarEvent->cssClass;
-//        }
+        $arr['class'] = get_class($fullCalendarEvent);
 
-
-        if ($fullCalendarEvent instanceof DisplayableInterface) {
-            $array['allDay'] = $fullCalendarEvent->isAllDay();
-            $array['title'] = $fullCalendarEvent->getTitle();
-            $array['start'] = $fullCalendarEvent->getStartDateTime()->format("Y-m-d\TH:i:sP");
-            $array['end'] = $fullCalendarEvent->getEndDateTime()->format("Y-m-d\TH:i:sP");
+        if ($fullCalendarEvent instanceof EditableInterface) {
+            $arr['id'] = $fullCalendarEvent->getId();
         }
 
+        if ($fullCalendarEvent instanceof DisplayableInterface) {
+            $arr['allDay'] = $fullCalendarEvent->isAllDay();
+            $arr['title'] = $fullCalendarEvent->getTitle();
+            $arr['start'] = $fullCalendarEvent->getStartDateTime()->format("Y-m-d\TH:i:sP");
+            $arr['end'] = $fullCalendarEvent->getEndDateTime()->format("Y-m-d\TH:i:sP");
+        }
 
-//        foreach ($fullCalendarEvent->otherFields as $field => $value) {
-//            $array[$field] = $value;
-//        }
-
-        return $array;
+        return $arr;
     }
 }

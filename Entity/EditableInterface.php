@@ -16,6 +16,11 @@ namespace ADesigns\CalendarBundle\Entity;
  */
 interface EditableInterface extends DisplayableInterface
 {
+    /**
+     * Return the ID of the event.
+     * @return mixed
+     */
+    public function getId();
 
     /**
      * @param \DateTime $startDateTime

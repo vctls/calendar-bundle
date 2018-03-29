@@ -4,18 +4,33 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="fullcalendar_loader" path="/fc-load-events">
+    <route id="fullcalendar_loader" path="/fc-load">
         <default key="_controller">ADesignsCalendarBundle:Calendar:loadCalendar</default>
         <option key="expose">true</option>
     </route>
 
-    <route id="fullcalendarevent_edit" path="/fc-edit-event">
+    <route id="fullcalendarevent_edit" path="/fc-event-edit">
         <default key="_controller">ADesignsCalendarBundle:FullCalendarEvent:edit</default>
         <option key="expose">true</option>
     </route>
 
-    <route id="fullcalendarevent_new" path="/fc-new-event">
+    <route id="fullcalendarevent_delete" path="/fc-event-delete">
+        <default key="_controller">ADesignsCalendarBundle:FullCalendarEvent:delete</default>
+        <option key="expose">true</option>
+    </route>
+
+    <route id="fullcalendarevent_new" path="/fc-event-new">
         <default key="_controller">ADesignsCalendarBundle:FullCalendarEvent:new</default>
+        <option key="expose">true</option>
+    </route>
+
+    <route id="fullcalendarevent_drop" path="/fc-event-drop">
+        <default key="_controller">ADesignsCalendarBundle:FullCalendarEvent:drop</default>
+        <option key="expose">true</option>
+    </route>
+
+    <route id="fullcalendarevent_resize" path="/fc-event-resize">
+        <default key="_controller">ADesignsCalendarBundle:FullCalendarEvent:drop</default>
         <option key="expose">true</option>
     </route>
 </routes>

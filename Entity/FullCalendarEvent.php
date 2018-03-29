@@ -21,31 +21,31 @@ class FullCalendarEvent implements EditableInterface
     
     /**
      * @var string Title/label of the calendar event.
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     protected $title;
     
     /**
      * @var string URL Relative to current path.
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     protected $url;
     
     /**
      * @var string HTML color code for the bg color of the event label.
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     protected $bgColor;
     
     /**
      * @var string HTML color code for the foregorund color of the event label.
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     protected $fgColor;
     
     /**
      * @var string css class for the event label
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     protected $cssClass;
     
