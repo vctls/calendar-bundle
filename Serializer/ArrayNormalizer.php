@@ -30,8 +30,8 @@ class ArrayNormalizer
         if ($fullCalendarEvent instanceof DisplayableInterface) {
             $arr['allDay'] = $fullCalendarEvent->isAllDay();
             $arr['title'] = $fullCalendarEvent->getTitle();
-            $arr['start'] = $fullCalendarEvent->getStartDateTime()->format("Y-m-d\TH:i:sP");
-            $arr['end'] = $fullCalendarEvent->getEndDateTime()->format("Y-m-d\TH:i:sP");
+            $arr['start'] = $fullCalendarEvent->getStartDatetime()->format("Y-m-d\TH:i:sP");
+            $arr['end'] = $fullCalendarEvent->getEndDatetime()->format("Y-m-d\TH:i:sP");
         }
 
         return $arr;

@@ -5,7 +5,7 @@ $(function () {
     var urlNew = Routing.generate('fullcalendarevent_new');
     var urlEdit = Routing.generate('fullcalendarevent_edit');
     // TODO Find a way of dynamically define the event class name and form type.
-    var className = 'AppBundle\\Entity\\CustomEvent';
+    var className = '';
     var formType = "";
 
     function modal(url) {
