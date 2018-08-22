@@ -2,6 +2,7 @@
 
 namespace ADesigns\CalendarBundle\Serializer;
 
+use ADesigns\CalendarBundle\Entity\ColorableInterface;
 use ADesigns\CalendarBundle\Entity\DisplayableInterface;
 use ADesigns\CalendarBundle\Entity\EditableInterface;
 
@@ -32,6 +33,13 @@ class ArrayNormalizer
             $arr['title'] = $fullCalendarEvent->getTitle();
             $arr['start'] = $fullCalendarEvent->getStartDatetime()->format("Y-m-d\TH:i:sP");
             $arr['end'] = $fullCalendarEvent->getEndDatetime()->format("Y-m-d\TH:i:sP");
+        }
+        
+        if ($fullCalendarEvent instanceof ColorableInterface) {
+            $arr['color'] = $fullCalendarEvent->getColor();
+            $arr['backgroundColor'] = $fullCalendarEvent->getBackgroundColor();
+            $arr['borderColor'] = $fullCalendarEvent->getBorderColor();
+            $arr['textColor'] = $fullCalendarEvent->getTextColor();
         }
 
         return $arr;

@@ -3,6 +3,7 @@
 namespace ADesigns\CalendarBundle\Tests\Entity;
 
 use ADesigns\CalendarBundle\Entity\FullCalendarEvent;
+use ADesigns\CalendarBundle\Serializer\ArrayNormalizer;
 
 class EventEntityTest extends \PHPUnit_Framework_TestCase
 {
@@ -66,7 +67,9 @@ class EventEntityTest extends \PHPUnit_Framework_TestCase
             'allDay' => false,
             'description' => 'Event descriptions'
         );
+        
+        $normalizer = new ArrayNormalizer();
 
-        $this->assertEquals($event->toArray(), $expectedArray);
+        $this->assertEquals($normalizer->normalize($event), $expectedArray);
     }
 }
