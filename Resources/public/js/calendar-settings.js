@@ -8,6 +8,11 @@ $(function () {
     var className = 'AppBundle\\Entity\\CustomEvent';
     var formType = "";
 
+    /**
+     * Create and open a modal window to display a form.
+     *
+     * @param url
+     */
     function modal(url) {
         var $dialog = $('<div id="modalEventForm"></div>')
             .load(url, function () {
@@ -18,11 +23,19 @@ $(function () {
                 title: 'New event',
                 width: 500,
                 height: 300,
-                modal: true
+                modal: true,
+                close: function () {
+                    $(this).dialog('destroy').remove();
+                }
             });
         $dialog.dialog('open');
     }
 
+    /**
+     * Fetch the form and display it inside the modal window.
+     *
+     * @param modal
+     */
     function initAjaxForm(modal) {
         $(modal).on('submit', '.ajaxForm', function (e) {
             e.preventDefault();
@@ -34,7 +47,7 @@ $(function () {
             })
                 .done(function () {
                     fullcalendar.fullCalendar('refetchEvents');
-                    $(modal).dialog('close');
+                    $(modal).dialog('destroy').remove();
                 })
                 .fail(function (jqXHR, textStatus, errorThrown) {
                     if (typeof jqXHR.responseJSON !== 'undefined') {
@@ -72,7 +85,20 @@ $(function () {
                 }
             }
         ],
-        select: function (start, end){
+        // Force the view into 'timetable' mode.
+        // defaultView: 'timetable',
+        // header: false,
+        // views: {
+        //     timetable: {
+        //         type: 'agenda',
+        //         columnHeaderFormat: 'dddd',
+        //         visibleRange: {
+        //             start: '1970-01-05',
+        //             end: '1970-01-12'
+        //         }
+        //     }
+        // },
+        select: function (start, end) {
             // 'start' and 'end' are Moment objects.
             modal(
                 urlNew + "?start=" + start.format('X') + "&end=" + end.format('X') + "&class=" + className + "&formType=" + formType
@@ -116,7 +142,7 @@ $(function () {
                 }
             });
         },
-        eventClick: function(event) {
+        eventClick: function (event) {
             modal(urlEdit + "?id=" + event.id + "&class=" + event.class + "&formType=" + formType)
         }
     });
