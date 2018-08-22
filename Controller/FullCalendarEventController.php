@@ -38,7 +38,7 @@ class FullCalendarEventController extends Controller
         $formTypeName = $request->get('formType');
 
         // If the class is set try to create a corresponding object.
-        if (isset($class)) {
+        if (!empty($class)) {
             // Check that it implements the correct interface.
             if (!in_array(DisplayableInterface::class, class_implements($class))) {
                 throw new \Exception("The custom class $class is not a displayable event class.");
@@ -104,7 +104,7 @@ class FullCalendarEventController extends Controller
         $formTypeName = $request->get('formType');
 
         // If the class is set try to create a corresponding object.
-        if (isset($class)) {
+        if (!empty($class)) {
             // Check that it implements the correct interface.
             if (!in_array(DisplayableInterface::class, class_implements($class))) {
                 throw new \Exception("The custom class $class is not a displayable event class.");
@@ -218,8 +218,8 @@ class FullCalendarEventController extends Controller
         // Change the dates.
         $start = new \DateTime($request->get('start'));
         $end = new \DateTime($request->get('end'));
-        $event->setStartDateTime($start);
-        $event->setEndDateTime($end);
+        $event->setStartDatetime($start);
+        $event->setEndDatetime($end);
 
         // Flush
         $em->flush();
@@ -257,8 +257,8 @@ class FullCalendarEventController extends Controller
         // Change the dates.
         $start = new \DateTime($request->get('start'));
         $end = new \DateTime($request->get('end'));
-        $event->setStartDateTime($start);
-        $event->setEndDateTime($end);
+        $event->setStartDatetime($start);
+        $event->setEndDatetime($end);
 
         // Flush
         $em->flush();

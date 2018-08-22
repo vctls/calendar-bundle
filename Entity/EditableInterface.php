@@ -23,12 +23,12 @@ interface EditableInterface extends DisplayableInterface
     public function getId();
 
     /**
-     * @param \DateTime $startDateTime
+     * @param \DateTime $startDatetime
      */
-    public function setStartDateTime(\DateTime $startDateTime);
+    public function setStartDatetime(\DateTime $startDatetime);
 
     /**
-     * @param \DateTime $endDateTime
+     * @param \DateTime $endDatetime
      */
-    public function setEndDateTime(\DateTime $endDateTime);
+    public function setEndDatetime(\DateTime $endDatetime);
 }

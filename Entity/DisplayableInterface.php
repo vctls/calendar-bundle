@@ -19,12 +19,12 @@ interface DisplayableInterface
     /**
      * @return \DateTime
      */
-    public function getStartDateTime();
+    public function getStartDatetime();
 
     /**
      * @return \DateTime
      */
-    public function getEndDateTime();
+    public function getEndDatetime();
 
     /**
      * @return string
