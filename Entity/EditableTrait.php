@@ -51,7 +51,7 @@ trait EditableTrait
      * @param int $id
      * @return EditableTrait
      */
-    public function setId(int $id)
+    public function setId($id)
     {
         $this->id = $id;
         return $this;
@@ -113,7 +113,7 @@ trait EditableTrait
      * @param string $title
      * @return $this
      */
-    public function setTitle(string $title)
+    public function setTitle($title)
     {
         $this->title = $title;
         return $this;
@@ -123,7 +123,7 @@ trait EditableTrait
      * @param bool $allDay
      * @return $this
      */
-    public function setAllDay(bool $allDay)
+    public function setAllDay($allDay)
     {
         $this->allDay = $allDay;
         return $this;

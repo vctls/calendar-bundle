@@ -23,6 +23,7 @@ class FullCalendarEventType extends AbstractType
             ->add('allDay', CheckboxType::class, [
                 'required' => false
             ])
+            ->add('color')
             ;
     }
 

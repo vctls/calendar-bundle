@@ -17,25 +17,25 @@ trait ColorableTrait
 {
     /**
      * @var string
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     private $color;
 
     /**
      * @var string
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     private $borderColor;
 
     /**
      * @var string
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     private $backgroundColor;
 
     /**
      * @var string
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
     private $textColor;
 
